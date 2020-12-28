@@ -117,6 +117,10 @@ local function max(list, predicate)
     return result
 end
 
+local function count(list, predicate)
+    return #filter(list, predicate)
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -129,5 +133,6 @@ Array = {
     append = append,
     max = max,
     findIndex = findIndex,
-    indexOf = indexOf
+    indexOf = indexOf,
+    count = count
 }
