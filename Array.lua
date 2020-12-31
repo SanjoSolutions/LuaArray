@@ -101,20 +101,36 @@ local function append(list, listToAppend)
     end
 end
 
-local function max(list, predicate)
+local function extreme(list, predicate, extremeFn)
     local result
     if #list == 0 then
         result = nil
     else
-        local maxIndex = 1
+        local extremeIndex = 1
         for index, item in ipairs(list) do
-            if predicate(item) > predicate(list[maxIndex]) then
-                maxIndex = index
+            if extremeFn(predicate(item), predicate(list[extremeIndex])) then
+                extremeIndex = index
             end
         end
-        result = list[maxIndex]
+        result = list[extremeIndex]
     end
     return result
+end
+
+local function smallerThan(a, b)
+    return a < b
+end
+
+local function min(list, predicate)
+    return extreme(list, predicate, smallerThan)
+end
+
+local function greaterThan(a, b)
+    return a > b
+end
+
+local function max(list, predicate)
+    return extreme(list, predicate, greaterThan)
 end
 
 local function maxCompare(list, compare)
@@ -156,6 +172,8 @@ Array = {
     copy = copy,
     concat = concat,
     append = append,
+    extreme = extreme,
+    min = min,
     max = max,
     maxCompare = maxCompare,
     findIndex = findIndex,
