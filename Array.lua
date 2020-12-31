@@ -121,6 +121,15 @@ local function count(list, predicate)
     return #filter(list, predicate)
 end
 
+local function any(list, predicate)
+    for _, item in ipairs(list) do
+        if predicate(item) then
+            return true
+        end
+    end
+    return false
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -134,5 +143,6 @@ Array = {
     max = max,
     findIndex = findIndex,
     indexOf = indexOf,
-    count = count
+    count = count,
+    any = any
 }
