@@ -117,6 +117,22 @@ local function max(list, predicate)
     return result
 end
 
+local function maxCompare(list, compare)
+    local result
+    if #list == 0 then
+        result = nil
+    else
+        local maxIndex = 1
+        for index, item in ipairs(list) do
+            if compare(item, list[maxIndex]) then
+                maxIndex = index
+            end
+        end
+        result = list[maxIndex]
+    end
+    return result
+end
+
 local function count(list, predicate)
     return #filter(list, predicate)
 end
@@ -141,6 +157,7 @@ Array = {
     concat = concat,
     append = append,
     max = max,
+    maxCompare = maxCompare,
     findIndex = findIndex,
     indexOf = indexOf,
     count = count,
