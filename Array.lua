@@ -162,6 +162,18 @@ local function any(list, predicate)
     return false
 end
 
+local function groupBy(list, predicate)
+    local groups = {}
+    for _, value in ipairs(list) do
+        local key = predicate(value)
+        if not groups[key] then
+            groups[key] = {}
+        end
+        table.insert(groups[key], value)
+    end
+    return groups
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -179,5 +191,6 @@ Array = {
     findIndex = findIndex,
     indexOf = indexOf,
     count = count,
-    any = any
+    any = any,
+    groupBy = groupBy
 }
