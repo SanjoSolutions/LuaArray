@@ -174,6 +174,28 @@ local function groupBy(list, predicate)
     return groups
 end
 
+local function pickWhile(list, condition)
+    local picks = {}
+    local index = 1
+    while index <= #list and condition(picks, list[index]) do
+        table.insert(picks, list[index])
+        index = index + 1
+    end
+    return picks
+end
+
+local function slice(list, startIndex, length)
+    if length == nil then
+        length = #list - startIndex + 1
+    end
+    local endIndex = startIndex + length - 1
+    local result
+    for index = startIndex, endIndex do
+        table.insert(result, list[index])
+    end
+    return result
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -192,5 +214,7 @@ Array = {
     indexOf = indexOf,
     count = count,
     any = any,
-    groupBy = groupBy
+    groupBy = groupBy,
+    pickWhile = pickWhile,
+    slice = slice
 }
