@@ -189,9 +189,21 @@ local function slice(list, startIndex, length)
         length = #list - startIndex + 1
     end
     local endIndex = startIndex + length - 1
-    local result
+    local result = {}
     for index = startIndex, endIndex do
         table.insert(result, list[index])
+    end
+    return result
+end
+
+local function unique(list)
+    local inList = {}
+    local result = {}
+    for _, item in ipairs(list) do
+        if not inList[item] then
+            inList[item] = true
+            table.insert(result, item)
+        end
     end
     return result
 end
@@ -216,5 +228,6 @@ Array = {
     any = any,
     groupBy = groupBy,
     pickWhile = pickWhile,
-    slice = slice
+    slice = slice,
+    unique = unique
 }
