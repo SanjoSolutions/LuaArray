@@ -69,7 +69,7 @@ local function reduce(list, predicate, initialValue)
 end
 
 local function all(list, predicate)
-    for index, item in ipairs(list) do
+    for _, item in ipairs(list) do
         if not predicate(item) then
             return false
         end
@@ -87,8 +87,8 @@ end
 
 local function concat(...)
     local result = {}
-    for listIndex, list in ipairs({...}) do
-        for index, item in ipairs(list) do
+    for _, list in ipairs({...}) do
+        for _, item in ipairs(list) do
             table.insert(result, item)
         end
     end
@@ -96,7 +96,7 @@ local function concat(...)
 end
 
 local function append(list, listToAppend)
-    for index, item in ipairs(listToAppend) do
+    for _, item in ipairs(listToAppend) do
         table.insert(list, item)
     end
 end
