@@ -47,7 +47,7 @@ end
 local function map(list, predicate)
     local result = {}
     for index, item in ipairs(list) do
-        result[index] = predicate(item)
+        result[index] = predicate(item, index)
     end
     return result
 end
