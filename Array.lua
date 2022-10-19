@@ -208,6 +208,12 @@ local function unique(list)
     return result
 end
 
+local function forEach(list, predicate)
+    for index, value in ipairs(list) do
+       predicate(value, index)
+    end
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -229,5 +235,6 @@ Array = {
     groupBy = groupBy,
     pickWhile = pickWhile,
     slice = slice,
-    unique = unique
+    unique = unique,
+    forEach = forEach
 }
