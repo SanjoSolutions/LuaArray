@@ -35,7 +35,7 @@ local function find(list, predicate)
     else
         result = list[index]
     end
-    return result
+    return result, index
 end
 
 local function includes(list, value)
