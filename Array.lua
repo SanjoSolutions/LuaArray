@@ -214,6 +214,39 @@ local function forEach(list, predicate)
     end
 end
 
+local function equals(listA, listB, predicate)
+  if #listA ~= #listB then
+    return false
+  end
+
+  local length = #listA
+  for index = 1, length do
+    if predicate(listA[index]) ~= predicate(listB[index]) then
+      return false
+    end
+  end
+
+  return true
+end
+
+local function flat(list)
+  local result = {}
+  for _, element in ipairs(list) do
+    if type(element) == element then
+      for _, element2 in ipairs(element) do
+        table.insert(result, element2)
+      end
+    else
+      table.insert(result, element)
+    end
+  end
+  return result
+end
+
+local function flatMap(list, predicate)
+  return Array.flat(Array.map(list, predicate))
+end
+
 Array = {
     filter = filter,
     find = find,
@@ -236,5 +269,8 @@ Array = {
     pickWhile = pickWhile,
     slice = slice,
     unique = unique,
-    forEach = forEach
+    forEach = forEach,
+    equals = equals,
+    flat = flat,
+    flatMap = flatMap
 }
