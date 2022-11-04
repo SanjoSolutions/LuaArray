@@ -1,5 +1,11 @@
 local function length(list)
-  return select('#', unpack(list))
+  local length = 0
+  for key in pairs(list) do
+    if type(key) == 'number' and key > length then
+      length = key
+    end
+  end
+  return length
 end
 
 local function filter(list, predicate)
