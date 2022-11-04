@@ -1,4 +1,4 @@
 ## Title: Array
-## Dependencies: Function
+## Dependencies: Function, Object
 
 Array.lua

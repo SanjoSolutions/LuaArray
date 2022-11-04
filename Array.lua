@@ -268,8 +268,16 @@ local function flatMap(list, predicate)
   return Array.flat(Array.map(list, predicate))
 end
 
+local function isNumber(value)
+  return type(value) == 'number'
+end
+
+local function areAllKeysNumbers(table)
+  return Array.all(Object.keys(table), isNumber)
+end
+
 local function isArray(list)
-  return type(list) == 'table' and #list == length(list)
+  return type(list) == 'table' and areAllKeysNumbers(list)
 end
 
 local function selectTrue(list)
