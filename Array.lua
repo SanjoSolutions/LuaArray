@@ -290,6 +290,20 @@ local function selectTrue(list)
   return Array.filter(list, Function.isTrue)
 end
 
+local function generateNumbers(from, to, interval)
+  local numbers = {}
+  for number = from, to, interval do
+    table.insert(numbers, number)
+  end
+  return numbers
+end
+
+local function isTrueForAllInInterval(from, to, interval, predicate)
+  local values = Array.generateNumbers(from, to, interval)
+  return Array.all(values, predicate)
+end
+
+
 Array = {
   filter = filter,
   find = find,
@@ -318,5 +332,7 @@ Array = {
   flatMap = flatMap,
   isArray = isArray,
   selectTrue = selectTrue,
-  length = length
+  length = length,
+  generateNumbers = generateNumbers,
+  isTrueForAllInInterval = isTrueForAllInInterval
 }
