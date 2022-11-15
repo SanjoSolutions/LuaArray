@@ -1,5 +1,5 @@
 ## Title: Array
 ## Interface: 11403
-## Dependencies: Function, Object
+## Dependencies: Function, Object, Boolean
 
 Array.lua

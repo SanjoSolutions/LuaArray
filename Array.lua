@@ -303,6 +303,9 @@ local function isTrueForAllInInterval(from, to, interval, predicate)
   return Array.all(values, predicate)
 end
 
+local function hasElements(array)
+  return toBoolean(next(array))
+end
 
 Array = {
   filter = filter,
@@ -334,5 +337,6 @@ Array = {
   selectTrue = selectTrue,
   length = length,
   generateNumbers = generateNumbers,
-  isTrueForAllInInterval = isTrueForAllInInterval
+  isTrueForAllInInterval = isTrueForAllInInterval,
+  hasElements = hasElements
 }
