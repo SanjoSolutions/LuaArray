@@ -1,5 +1,5 @@
 ## Title: Array
-## Interface: 100000
+## Interface: 100002
 ## Dependencies: Function, Object, Boolean
 
 Array.lua
