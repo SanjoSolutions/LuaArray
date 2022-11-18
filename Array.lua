@@ -292,6 +292,10 @@ local function isArray(list)
   return type(list) == 'table' and areAllKeysNumbers(list)
 end
 
+local function isArrayWithSubsequentIndexes(list)
+  return isArray(list) and length(list) == #list
+end
+
 local function selectTrue(list)
   return Array.filter(list, Function.isTrue)
 end
@@ -344,5 +348,6 @@ Array = {
   length = length,
   generateNumbers = generateNumbers,
   isTrueForAllInInterval = isTrueForAllInInterval,
-  hasElements = hasElements
+  hasElements = hasElements,
+  isArrayWithSubsequentIndexes = isArrayWithSubsequentIndexes
 }
