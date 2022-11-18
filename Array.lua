@@ -29,9 +29,11 @@ local function findIndex(list, predicate)
   return -1
 end
 
-local function isEqual(value)
-  return function(value2)
-    return value2 == value
+local function isEqual(a, b)
+  if type(a) == 'number' and type(b) == 'number' then
+    return math.abs(b - a) < 0.0000000001
+  else
+    return a == b
   end
 end
 
@@ -240,13 +242,17 @@ local function forEach(list, predicate)
 end
 
 local function equals(listA, listB, predicate)
-  if length(listA) ~= length(listB) then
+  predicate = predicate or Function.identity
+
+  local lengthOfListA = Array.length(listA)
+
+  if lengthOfListA ~= Array.length(listB) then
     return false
   end
 
-  local length = Array.length(listA)
+  local length = lengthOfListA
   for index = 1, length do
-    if predicate(listA[index]) ~= predicate(listB[index]) then
+    if not isEqual(predicate(listA[index]), predicate(listB[index])) then
       return false
     end
   end
@@ -258,7 +264,7 @@ local function flat(list)
   local result = {}
   for index = 1, length(list) do
     local element = list[index]
-    if Array.isArray(element)  then
+    if Array.isArray(element) then
       for index = 1, length(element) do
         local element2 = element[index]
         table.insert(result, element2)
