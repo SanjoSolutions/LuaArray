@@ -321,6 +321,25 @@ local function isEmpty(array)
   return not hasElements(array)
 end
 
+local function remove(array, element)
+  local equals = Function.partial(isEqual, element)
+  local index
+  repeat
+    index = findIndex(array, equals)
+    if index ~= -1 then
+      table.remove(array, index)
+    end
+  until index == -1
+end
+
+local function removeFirstOccurence(array, element)
+  local equals = Function.partial(isEqual, element)
+  local index = findIndex(array, equals)
+  if index ~= -1 then
+    table.remove(array, index)
+  end
+end
+
 Array = {
   filter = filter,
   find = find,
@@ -354,5 +373,7 @@ Array = {
   isTrueForAllInInterval = isTrueForAllInInterval,
   hasElements = hasElements,
   isEmpty = isEmpty,
-  isArrayWithSubsequentIndexes = isArrayWithSubsequentIndexes
+  isArrayWithSubsequentIndexes = isArrayWithSubsequentIndexes,
+  remove = remove,
+  removeFirstOccurence = removeFirstOccurence
 }
