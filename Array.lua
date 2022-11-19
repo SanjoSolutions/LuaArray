@@ -317,6 +317,10 @@ local function hasElements(array)
   return toBoolean(next(array))
 end
 
+local function isEmpty(array)
+  return not hasElements(array)
+end
+
 Array = {
   filter = filter,
   find = find,
@@ -349,5 +353,6 @@ Array = {
   generateNumbers = generateNumbers,
   isTrueForAllInInterval = isTrueForAllInInterval,
   hasElements = hasElements,
+  isEmpty = isEmpty,
   isArrayWithSubsequentIndexes = isArrayWithSubsequentIndexes
 }
