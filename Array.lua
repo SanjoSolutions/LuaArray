@@ -29,16 +29,16 @@ local function findIndex(list, predicate)
   return -1
 end
 
-local function isEqual(a, b)
+local function seemsEqual(a, b)
   if type(a) == 'number' and type(b) == 'number' then
-    return math.abs(b - a) < 0.0000000001
+    return Float.seemsCloseBy(a, b)
   else
     return a == b
   end
 end
 
 local function indexOf(list, value)
-  return findIndex(list, isEqual(value))
+  return findIndex(list, seemsEqual(value))
 end
 
 local function find(list, predicate)
@@ -252,7 +252,7 @@ local function equals(listA, listB, predicate)
 
   local length = lengthOfListA
   for index = 1, length do
-    if not isEqual(predicate(listA[index]), predicate(listB[index])) then
+    if not seemsEqual(predicate(listA[index]), predicate(listB[index])) then
       return false
     end
   end
@@ -322,7 +322,7 @@ local function isEmpty(array)
 end
 
 local function remove(array, element)
-  local equals = Function.partial(isEqual, element)
+  local equals = Function.partial(seemsEqual, element)
   local index
   repeat
     index = findIndex(array, equals)
@@ -333,7 +333,7 @@ local function remove(array, element)
 end
 
 local function removeFirstOccurence(array, element)
-  local equals = Function.partial(isEqual, element)
+  local equals = Function.partial(seemsEqual, element)
   local index = findIndex(array, equals)
   if index ~= -1 then
     table.remove(array, index)
