@@ -9,7 +9,7 @@ local function length(list)
 end
 
 local function filter(list, predicate)
-  local result = {}
+  local result = Array.create()
   for index = 1, length(list) do
     local item = list[index]
     if predicate(item) then
@@ -59,7 +59,7 @@ local function includes(list, value)
 end
 
 local function map(list, predicate)
-  local result = {}
+  local result = Array.create()
   for index = 1, length(list) do
     local item = list[index]
     result[index] = predicate(item, index)
@@ -94,7 +94,7 @@ local function all(list, predicate)
 end
 
 local function copy(list)
-  local result = {}
+  local result = Array.create()
   for index = 1, length(list) do
     local item = list[index]
     result[index] = item
@@ -103,7 +103,7 @@ local function copy(list)
 end
 
 local function concat(...)
-  local result = {}
+  local result = Array.create()
   local lists = { ... }
   for index = 1, length(lists) do
     local list = lists[index]
@@ -115,11 +115,12 @@ local function concat(...)
   return result
 end
 
-local function append(list, listToAppend)
+local function append(array, listToAppend)
   for index = 1, length(listToAppend) do
     local item = listToAppend[index]
-    table.insert(list, item)
+    table.insert(array, item)
   end
+  return array
 end
 
 local function extreme(list, predicate, extremeFn)
@@ -214,7 +215,7 @@ local function slice(list, startIndex, length)
     length = Array.length(list) - startIndex + 1
   end
   local endIndex = startIndex + length - 1
-  local result = {}
+  local result = Array.create()
   for index = startIndex, endIndex do
     table.insert(result, list[index])
   end
@@ -223,7 +224,7 @@ end
 
 local function unique(list)
   local inList = {}
-  local result = {}
+  local result = Array.create()
   for index = 1, length(list) do
     local item = list[index]
     if not inList[item] then
@@ -239,6 +240,7 @@ local function forEach(list, predicate)
     local value = list[index]
     predicate(value, index)
   end
+  return list
 end
 
 local function equals(listA, listB, predicate)
@@ -261,7 +263,7 @@ local function equals(listA, listB, predicate)
 end
 
 local function flat(list)
-  local result = {}
+  local result = Array.create()
   for index = 1, length(list) do
     local element = list[index]
     if Array.isArray(element) then
@@ -301,7 +303,7 @@ local function selectTrue(list)
 end
 
 local function generateNumbers(from, to, interval)
-  local numbers = {}
+  local numbers = Array.create()
   for number = from, to, interval do
     table.insert(numbers, number)
   end
@@ -330,6 +332,7 @@ local function remove(array, element)
       table.remove(array, index)
     end
   until index == -1
+  return array
 end
 
 local function removeFirstOccurence(array, element)
@@ -338,9 +341,22 @@ local function removeFirstOccurence(array, element)
   if index ~= -1 then
     table.remove(array, index)
   end
+  return array
+end
+
+local function create(table)
+  local array
+  if table then
+    array = Array.copy(table)
+  else
+    array = {}
+  end
+  setmetatable(array, { __index = Array })
+  return array
 end
 
 Array = {
+  create = create,
   filter = filter,
   find = find,
   includes = includes,
