@@ -316,7 +316,7 @@ local function isTrueForAllInInterval(from, to, interval, predicate)
 end
 
 local function hasElements(array)
-  return toBoolean(next(array))
+  return Boolean.toBoolean(next(array))
 end
 
 local function isEmpty(array)
