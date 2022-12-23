@@ -1,3 +1,6 @@
+--- @type Boolean
+local Boolean = Library.retrieve('Boolean', '^1.0.0')
+
 local function length(list)
   local length = 0
   for key in pairs(list) do

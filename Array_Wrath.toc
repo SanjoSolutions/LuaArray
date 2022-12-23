@@ -1,5 +1,7 @@
 ## Title: Array
 ## Interface: 30400
-## Dependencies: Function, Object, Boolean, Float
+## Dependencies: Function, Object, Float
 
+libs\Library\Library.lua
+libs\Boolean\Boolean.lua
 Array.lua
