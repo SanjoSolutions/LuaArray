@@ -2,4 +2,4 @@
 ## Interface: 100002
 ## Dependencies: Function, Object, Float
 
-Array.xml
+Array.lua
