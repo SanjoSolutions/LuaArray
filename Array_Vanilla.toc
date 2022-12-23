@@ -2,6 +2,4 @@
 ## Interface: 11403
 ## Dependencies: Function, Object, Float
 
-libs\Library\Library.lua
-libs\Boolean\Boolean.lua
-Array.lua
+Array.xml
