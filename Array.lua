@@ -38,7 +38,9 @@ local function seemsEqual(a, b)
 end
 
 local function indexOf(list, value)
-  return findIndex(list, seemsEqual(value))
+  return findIndex(list, function (b)
+    return seemsEqual(value, b)
+  end)
 end
 
 local function find(list, predicate)
@@ -124,6 +126,7 @@ local function append(array, listToAppend)
 end
 
 local function extreme(list, predicate, extremeFn)
+  predicate = predicate or Function.identity
   local result
   if length(list) == 0 then
     result = nil
