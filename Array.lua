@@ -326,8 +326,8 @@ local function isEmpty(array)
   return not hasElements(array)
 end
 
-local function remove(array, element)
-  local equals = Function.partial(seemsEqual, element)
+local function remove(array, value)
+  local equals = Function.partial(seemsEqual, value)
   local index
   repeat
     index = findIndex(array, equals)
@@ -338,8 +338,8 @@ local function remove(array, element)
   return array
 end
 
-local function removeFirstOccurence(array, element)
-  local equals = Function.partial(seemsEqual, element)
+local function removeFirstOccurence(array, value)
+  local equals = Function.partial(seemsEqual, value)
   local index = findIndex(array, equals)
   if index ~= -1 then
     table.remove(array, index)
