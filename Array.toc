@@ -1,5 +1,5 @@
 ## Title: Array
-## Interface: 100100
+## Interface: 100007
 ## Dependencies: Function, Object, Float
 ## Version: 1.0.0
 
