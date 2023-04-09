@@ -1,5 +1,6 @@
 ## Title: Array
 ## Interface: 100100
 ## Dependencies: Function, Object, Float
+## Version: 1.0.0
 
 Array.lua
