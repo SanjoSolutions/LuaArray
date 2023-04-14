@@ -1,6 +1,6 @@
 ## Title: Array
 ## Interface: 100007
-## Dependencies: Function, Object, Float
 ## Version: 1.0.0
+## OptionalDeps: Library, Function, Object, Float
 
 Array.lua
