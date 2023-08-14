@@ -1,6 +1,5 @@
 ## Title: Array
 ## Interface: 11403
-## Version: 1.0.0
-## OptionalDeps: Library, Function, Object, Float
+## Version: 2.0.0
 
 Array.xml

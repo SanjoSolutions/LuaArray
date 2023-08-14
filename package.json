@@ -2,8 +2,8 @@
   "name": "Array",
   "dependencies": {
     "Library": "SanjoSolutions/LuaLibrary#v0.4.0",
-    "Function": "SanjoSolutions/LuaFunction#v1.0.0",
-    "Object": "SanjoSolutions/LuaObject#v1.0.0",
-    "Float": "SanjoSolutions/LuaFloat#v1.0.0"
+    "Function": "SanjoSolutions/LuaFunction#v2.0.0",
+    "Object": "SanjoSolutions/LuaObject#v2.0.0",
+    "Float": "SanjoSolutions/LuaFloat#v2.0.0"
   }
 }
