@@ -1,9 +1,9 @@
 {
-  "name": "Array",
+  "name": "@sanjo-addons/array",
   "dependencies": {
-    "Library": "SanjoSolutions/LuaLibrary#v0.4.0",
-    "Function": "SanjoSolutions/LuaFunction#v2.0.0",
-    "Object": "SanjoSolutions/LuaObject#v2.0.0",
-    "Float": "SanjoSolutions/LuaFloat#v2.0.0"
+    "@sanjo-addons/library": "SanjoSolutions/LuaLibrary#v0.4.0",
+    "@sanjo-addons/function": "SanjoSolutions/LuaFunction#v2.0.0",
+    "@sanjo-addons/object": "SanjoSolutions/LuaObject#v2.0.0",
+    "@sanjo-addons/float": "SanjoSolutions/LuaFloat#v2.0.0"
   }
 }
