@@ -1,0 +1,12 @@
+- path: libs/Library
+  url: https://github.com/SanjoSolutions/LuaLibrary.git
+  tag: main
+- path: libs/Function
+  url: https://github.com/SanjoSolutions/LuaFunction.git
+  tag: v1.0.0
+- path: libs/Object
+  url: https://github.com/SanjoSolutions/LuaObject.git
+  tag: v1.0.0
+- path: libs/Float
+  url: https://github.com/SanjoSolutions/LuaFloat.git
+  tag: v1.0.0
