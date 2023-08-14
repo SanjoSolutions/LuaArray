@@ -1,20 +1,11 @@
 local addOnName = 'Array'
 local version = '1.0.0'
 
-if (_G.Library and not Library.isRegistered(addOnName, version)) or not _G.Library then
-  local Function
-  local Object
-  local Float
-
-  if _G.Library then
-    Function = Library.retrieve('Function', '^1.0.0')
-    Object = Library.retrieve('Object', '^1.0.0')
-    Float = Library.retrieve('Float', '^1.0.0')
-  else
-    Function = _G.Function
-    Object = _G.Object
-    Float = _G.Float
-  end
+if _G.Library and not Library.isRegistered(addOnName, version) then
+  local Function = Library.retrieve('Function', '^1.0.0')
+    local Object = Library.retrieve('Object', '^1.0.0')
+    local Float = Library.retrieve('Float', '^1.0.0')
+    local Boolean = Library.retrieve('Boolean', '^1.0.0')
 
   --- @class Array
   local Array = {}
@@ -379,9 +370,7 @@ if (_G.Library and not Library.isRegistered(addOnName, version)) or not _G.Libra
     return array
   end
 
-  if _G.Library then
-    Library.register(addOnName, version, Array)
-  else
-    _G.Array = Array
-  end
+  Library.register(addOnName, version, Array)
+else
+  error(addOnName + ' requires Library. It seems absent.')
 end
