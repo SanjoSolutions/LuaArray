@@ -1,5 +1,5 @@
 local addOnName = 'Array'
-local version = '2.0.0'
+local version = '2.1.0'
 
 if _G.Library then
   if not Library.isRegistered(addOnName, version) then
@@ -262,6 +262,9 @@ if _G.Library then
       return result
     end
 
+    --- @generic T
+    --- @param list T[]
+    --- @param predicate fun(value: T, index: number): any
     function Array.forEach(list, predicate)
       for index = 1, Array.length(list) do
         local value = list[index]
@@ -362,13 +365,21 @@ if _G.Library then
       return array
     end
 
-    function Array.removeFirstOccurence(array, value)
+    function Array.removeFirstOccurrence(array, value)
       local equals = Function.partial(seemsEqual, value)
       local index = Array.findIndex(array, equals)
       if index ~= -1 then
         table.remove(array, index)
       end
       return array
+    end
+
+    --- @deprecated Use Array.removeFirstOccurrence instead.
+    Array.removeFirstOccurence = Array.removeFirstOccurrence
+
+    function Array.last(array)
+      local length = Array.length(array)
+      return array[length]
     end
 
     Library.register(addOnName, version, Array)
