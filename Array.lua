@@ -1,5 +1,5 @@
 local addOnName = 'Array'
-local version = '2.1.0'
+local version = '2.1.1'
 
 if _G.Library then
   if not Library.isRegistered(addOnName, version) then
